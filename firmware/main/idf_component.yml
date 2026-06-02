@@ -1,0 +1,6 @@
+dependencies:
+  idf: ">=5.1"
+  # WebSocket client (managed component)
+  espressif/esp_websocket_client: "^1.2.0"
+  # Driver màn ST77922 QSPI (managed component) — xác nhận version mới nhất trên component registry
+  espressif/esp_lcd_st77922: "^1.0.0"

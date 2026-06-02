@@ -1,0 +1,5 @@
+# ESP-IDF project — Phase 1 (WiFi provisioning + OTA + WebSocket)
+# Target cố định: esp32s3 (board LCDWIKI ES3C35P)
+cmake_minimum_required(VERSION 3.16)
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(xiaozhi_vn_fw)

@@ -1,0 +1,22 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "wifi_provision.c"
+        "wifi_sta.c"
+        "ota_client.c"
+        "ws_client.c"
+        "display.c"
+    INCLUDE_DIRS "."
+    REQUIRES
+        nvs_flash
+        esp_wifi
+        esp_event
+        esp_netif
+        esp_http_server
+        esp_http_client
+        esp_https_ota
+        json
+        esp_websocket_client
+        esp_lcd
+        driver
+)

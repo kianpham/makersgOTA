@@ -1,0 +1,124 @@
+/* Reset + base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-700);
+  background: var(--gray-50);
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+a {
+  color: var(--primary-500);
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+i.ti {
+  font-style: normal;
+  line-height: 1;
+}
+
+/* App shell */
+.appshell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-6);
+}
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+}
+.page-header__main {
+  flex: 1;
+}
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.3;
+}
+.page-subtitle {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: var(--sp-1);
+}
+
+/* Bilingual label */
+.bi {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.bi__en {
+  font-weight: 500;
+}
+.bi__vi {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
+/* Utility */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.gap-2 {
+  gap: var(--sp-2);
+}
+.muted {
+  color: var(--gray-500);
+}
+
+/* Page transition */
+.page-enter {
+  animation: pageEnter 0.2s ease both;
+}
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

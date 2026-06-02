@@ -1,0 +1,21 @@
+# Phase 1 defaults — xác nhận lại bằng `idf.py menuconfig` cho board ES3C35P.
+CONFIG_IDF_TARGET="esp32s3"
+
+# PSRAM 8MB OPI (board ES3C35P). Tên symbol có thể đổi theo phiên bản IDF — kiểm trong menuconfig.
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_SPEED_80M=y
+
+# Flash 16MB
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
+
+# Bảng phân vùng OTA tùy biến
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# HTTP server cho captive portal
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
+
+# Log
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
