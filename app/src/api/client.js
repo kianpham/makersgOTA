@@ -81,6 +81,8 @@ export const api = {
 
   listFirmwares: () => req('/firmware').then((d) => d.firmwares || []),
 
+  deleteFirmware: (id) => req('/firmware/' + encodeURIComponent(id), { method: 'DELETE' }),
+
   uploadFirmware: async (file, version, board) => {
     const fd = new FormData()
     fd.append('file', file)

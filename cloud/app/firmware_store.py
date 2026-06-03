@@ -52,6 +52,25 @@ class FirmwareStore:
         p = self.dir / f["file"]
         return p if p.exists() else None
 
+    def delete(self, fw_id: str) -> bool:
+        """Xóa firmware khỏi manifest + xóa file (nếu không entry nào khác dùng chung file)."""
+        with self._lock:
+            data = self._load()
+            entry = next((f for f in data["firmwares"] if f["id"] == fw_id), None)
+            if not entry:
+                return False
+            data["firmwares"] = [f for f in data["firmwares"] if f["id"] != fw_id]
+            self._save(data)
+            fname = entry.get("file")
+            if fname and not any(f.get("file") == fname for f in data["firmwares"]):
+                p = self.dir / fname
+                if p.exists():
+                    try:
+                        p.unlink()
+                    except OSError:
+                        pass
+            return True
+
     def add(self, *, fw_id: str, version: str, board: str | None, filename: str, content: bytes) -> dict:
         with self._lock:
             sha = hashlib.sha256(content).hexdigest()

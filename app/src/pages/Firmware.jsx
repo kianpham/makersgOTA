@@ -14,6 +14,7 @@ export default function Firmware() {
   const [board, setBoard] = useState('es3c35p')
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState(null)
+  const [deleting, setDeleting] = useState(null)
 
   if (error) return <CloudDown error={error} onRetry={reload} />
   const firmwares = data || []
@@ -36,6 +37,20 @@ export default function Firmware() {
       setMsg('Upload lỗi: ' + err.message)
     } finally {
       setBusy(false)
+    }
+  }
+
+  async function del(f) {
+    if (!window.confirm(`Xóa firmware ${f.version} (${f.board || '—'})?`)) return
+    setDeleting(f.id)
+    setMsg(null)
+    try {
+      await api.deleteFirmware(f.id)
+      reload()
+    } catch (err) {
+      setMsg('Xóa lỗi: ' + err.message)
+    } finally {
+      setDeleting(null)
     }
   }
 
@@ -96,20 +111,21 @@ export default function Firmware() {
                 <th>SHA-256</th>
                 <th>Size</th>
                 <th>Uploaded</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {loading &&
                 [0, 1].map((i) => (
                   <tr key={i}>
-                    <td colSpan={5}>
+                    <td colSpan={6}>
                       <div className="skeleton" />
                     </td>
                   </tr>
                 ))}
               {!loading && firmwares.length === 0 && (
                 <tr>
-                  <td colSpan={5}>
+                  <td colSpan={6}>
                     <div className="empty">
                       <i className="ti ti-package-off" />
                       Chưa có firmware. Upload bản đầu tiên ở trên.
@@ -134,6 +150,17 @@ export default function Firmware() {
                     </td>
                     <td className="muted">{fmtBytes(f.size)}</td>
                     <td className="muted">{fmtTime(f.uploaded)}</td>
+                    <td style={{ textAlign: 'right' }}>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        icon="ti-trash"
+                        onClick={() => del(f)}
+                        disabled={deleting === f.id}
+                      >
+                        {deleting === f.id ? 'Đang xóa…' : 'Xóa'}
+                      </Button>
+                    </td>
                   </tr>
                 ))}
             </tbody>

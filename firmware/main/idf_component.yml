@@ -1,6 +1,8 @@
 dependencies:
-  idf: ">=5.1"
-  # WebSocket client (managed component)
+  idf: ">=5.5"
+  lvgl/lvgl: "~9.5.0"
+  esp_lvgl_port: "~2.7.2"
+  espressif/esp_lcd_st77922: "^1.0.5"
+  # Phase B/C: touch + websocket
+  # espressif/esp_lcd_touch_ft5x06: "~1"
   espressif/esp_websocket_client: "^1.2.0"
-  # Driver màn ST77922 QSPI (managed component) — xác nhận version mới nhất trên component registry
-  espressif/esp_lcd_st77922: "^1.0.0"

@@ -36,6 +36,14 @@ async def download(request: Request, fw_id: str):
     )
 
 
+@router.delete("/{fw_id}")
+async def delete_firmware(request: Request, fw_id: str, _admin: str = Depends(require_admin)):
+    fw = request.app.state.firmware
+    if fw.delete(fw_id):
+        return {"status": "ok", "deleted": fw_id}
+    return Response(status_code=404, media_type="application/json", content='{"error":"not_found"}')
+
+
 @router.post("/upload")
 async def upload(
     request: Request,

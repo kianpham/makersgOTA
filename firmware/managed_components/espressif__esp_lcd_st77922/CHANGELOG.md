@@ -1,0 +1,61 @@
+# ChangeLog
+
+## v1.0.5 - 2025-09-29
+
+### bugfix:
+
+* Check the return value of the underlying deletion function. If it fails, propagate the error
+
+## v1.0.4 - 2025-09-15
+
+### Changes:
+
+* Updated phy_clk_src default value from MIPI_DSI_PHY_CLK_SRC_DEFAULT to 0
+
+## v1.0.3 - 2025-6-23
+
+### bugfix：
+
+*  Fixed the log TAG issue
+
+## v1.0.2 - 2024-11-10
+
+### bugfix:
+
+* Increased the default Lane bit rate value
+
+## v1.0.1 - 2024-11-7
+
+* Fix default initialization parameters and front-back window parameters.
+
+## v1.0.0 - 2024-8-7
+
+* Support MIPI-DSI interface
+
+## v0.1.0 - 2024-5-15
+
+### Enhancements:
+
+* Support RGB interface
+
+## v0.0.3 - 2024-3-27
+
+### Enhancements:
+
+### bugfix
+
+* Fix the logic when checking conflicting commands between initialization sequence and driver
+* Fix the wrong command structure in the README.md
+
+## v0.0.2 - 2024-2-19
+
+### Enhancements:
+
+* Add notes of X coordinate limitation in README.md
+
+## v0.0.1 - 2024-1-22
+
+### Enhancements:
+
+* Implement the driver for the ST77922 LCD controller
+* Support SPI and QSPI interface

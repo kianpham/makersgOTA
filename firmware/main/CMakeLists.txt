@@ -1,22 +1,41 @@
 idf_component_register(
     SRCS
-        "main.c"
-        "wifi_provision.c"
-        "wifi_sta.c"
-        "ota_client.c"
-        "ws_client.c"
-        "display.c"
-    INCLUDE_DIRS "."
+        "main.cc"
+        "application.cc"
+        "settings.cc"
+        "ota.cc"
+        "timesync.cc"
+        "pomodoro.cc"
+        "display/display.cc"
+        "display/lcd_display.cc"
+        "protocols/ws_client.cc"
+        "boards/common/board.cc"
+        "boards/common/backlight.cc"
+        "boards/common/wifi_board.cc"
+        "boards/es3c35p/es3c35p_board.cc"
+    INCLUDE_DIRS
+        "."
+        "display"
+        "protocols"
+        "boards/common"
+        "boards/es3c35p"
     REQUIRES
         nvs_flash
+        driver
+        esp_driver_i2c
+        esp_timer
+        esp_hw_support
         esp_wifi
         esp_event
         esp_netif
+        lwip
         esp_http_server
         esp_http_client
         esp_https_ota
         json
         esp_websocket_client
         esp_lcd
-        driver
+        esp_lcd_st77922
+        lvgl
+        esp_lvgl_port
 )

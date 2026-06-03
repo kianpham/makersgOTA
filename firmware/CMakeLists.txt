@@ -1,5 +1,5 @@
-# ESP-IDF project — Phase 1 (WiFi provisioning + OTA + WebSocket)
-# Target cố định: esp32s3 (board LCDWIKI ES3C35P)
+# MakerSG firmware — ESP-IDF, C++ (kiến trúc Xiaozhi-arch).
+# Board LCDWIKI ES3C35P (ESP32-S3, LCD ST77922 QSPI 320x480, touch FT6x36).
 cmake_minimum_required(VERSION 3.16)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(xiaozhi_vn_fw)
+project(makersg_fw)
