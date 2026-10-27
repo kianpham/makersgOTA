@@ -114,8 +114,10 @@ void Application::RenderPomodoro(Display* display) {
     if (!display) return;
     int rem = pomo_.remaining();
     if (rem < 0) rem = 0;
+    int mm = rem / 60;
+    if (mm > 99) mm = 99;  // kẹp để ô MM:SS luôn vừa buffer
     char mmss[8];
-    snprintf(mmss, sizeof(mmss), "%02d:%02d", rem / 60, rem % 60);
+    snprintf(mmss, sizeof(mmss), "%02d:%02d", mm, rem % 60);
     int dur = pomo_.duration();
     int pct = (dur > 0) ? (dur - rem) * 100 / dur : 0;
     const char* phase = "";
